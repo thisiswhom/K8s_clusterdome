@@ -90,7 +90,7 @@ This configuration sets up the cluster to run Folding@Home workloads continuousl
 ---
 
 ## Contributors
-- [Your Name](https://github.com/yourusername)
+- Kevin Carter
 - [Contributor 2](https://github.com/contributor2)
 
 Please reach out with questions or suggestions for improvement. Contributions are welcome!
