@@ -3,4 +3,7 @@
   <component name="GitLabDefaultAccount">
     <option name="defaultAccountId" value="eb18b6d3-9337-4126-b9a8-20ecc3a2218b" />
   </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="homebrew-17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
 </project>

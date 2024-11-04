@@ -1,0 +1,7 @@
+Router IP: 10.0.0.1
+DHCP Range: 10.0.0.240-256
+
+
+Overall Plan for static IP's
+control nodes are: 10.0.0.2,3,4
+worker nodes: last two number of hostname are the last octet of the ip range
