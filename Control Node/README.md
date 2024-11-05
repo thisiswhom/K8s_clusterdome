@@ -68,9 +68,9 @@ sudo kubeadm init --upload-certs --pod-network-cidr=10.244.0.0/16
 ```
 
 - This command initializes the first control plane node and configures it for high availability.
-- Save the `kubeadm join` command that is output.
+- Save the `kubeadm join` command that is output. You will need this so save it.
 
-On the second and third Pis, run the saved `kubeadm join` command to add them as control plane nodes.
+On the second and third PCs, run the saved `kubeadm join` command to add them as control plane nodes.
 
 ---
 
@@ -93,13 +93,11 @@ Kubernetes requires a pod network for inter-pod communication. A popular choice 
 ```bash
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 ```
-
 ---
 
 ## Step 7: Verify Installation
 
 Check that your nodes are up and running.
-
 ```bash
 kubectl get nodes
 ```
