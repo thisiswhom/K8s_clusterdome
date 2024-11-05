@@ -1,6 +1,18 @@
 ```markdown
-# Raspberry Pi Kubernetes Cluster Setup Guide
+# detemine your Host os you will use, we will be using ubuntu server
 
+1. download the ubuntu server ISO from: 
+https://ubuntu.com/download/server/thank-you?version=24.04.1&architecture=amd64&lts=true
+2. make a bootable usb using a tool like belena etcher or your preferred method. 
+3. plug that USB into a working pc and install ubuntu server.
+4. for our control node we went with the below parameters
+
+Naming convention: 
+k8s-control-xx with xx being the school computer number for the pc
+password: (super secret password wink wink)
+our static ip will be 10.0.0.xx/16 with xx also matching the the computer number
+
+## Kubernetes Cluster Setup Guide
 ## Step 1: Update and Upgrade
 
 Update your system packages to ensure everything is up-to-date.
@@ -8,18 +20,17 @@ Update your system packages to ensure everything is up-to-date.
 ```bash
 sudo apt update
 sudo apt upgrade -y
+reboot
 ```
 
 ---
 
 ## Step 2: Install Docker
 
-Docker is required to run containers on your Pi.
+Docker is required to run containers on your PC.
 
 ```bash
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-sudo usermod -aG docker $USER
+sudo apt install docker.io
 ```
 
 After installation, log out and back in to apply the Docker group change.
@@ -31,23 +42,28 @@ After installation, log out and back in to apply the Docker group change.
 These tools will allow you to set up and manage your Kubernetes cluster.
 
 ```bash
-sudo apt-get update && sudo apt-get install -y apt-transport-https curl
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
-deb https://apt.kubernetes.io/ kubernetes-xenial main
-EOF
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+# This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
 sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
+sudo systemctl enable --now kubelet
+
 ```
 
 ---
 
 ## Step 4: Initialize the Kubernetes Control Plane
 
-Run the following command on the first Raspberry Pi to set up the control plane node.
+Run the following command on the first PC to set up the control plane node.
 
 ```bash
+##disable swap
+
+
 sudo kubeadm init --control-plane-endpoint="LOAD_BALANCER_IP:6443" --upload-certs --pod-network-cidr=10.244.0.0/16
 ```
 
