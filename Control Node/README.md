@@ -4,7 +4,7 @@
 1. download the ubuntu server ISO from: 
 https://ubuntu.com/download/server/thank-you?version=24.04.1&architecture=amd64&lts=true
 2. make a bootable usb using a tool like belena etcher or your preferred method. 
-3. plug that USB into a working pc and install ubuntu server.
+3. plug that USB into a working pc and install ubuntu server. make sure to install ssh, everything else can be default/below
 4. for our control node we went with the below parameters
 
 Naming convention: 
