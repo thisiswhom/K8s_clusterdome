@@ -62,12 +62,11 @@ Run the following command on the first PC to set up the control plane node.
 
 ```bash
 ##disable swap
-
-
-sudo kubeadm init --control-plane-endpoint="LOAD_BALANCER_IP:6443" --upload-certs --pod-network-cidr=10.244.0.0/16
+sudo swapoff -a
+sudo rm -f /swap.img 
+sudo kubeadm init --upload-certs --pod-network-cidr=10.244.0.0/16
 ```
 
-- Replace `LOAD_BALANCER_IP` with your load balancer's IP address.
 - This command initializes the first control plane node and configures it for high availability.
 - Save the `kubeadm join` command that is output.
 
