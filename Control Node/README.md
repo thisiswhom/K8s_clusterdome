@@ -61,6 +61,8 @@ sudo apt-get install keepalived haproxy
 curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/main/Control%20Node/haproxy.cfg -o /etc/haproxy/haproxy.cfg
 curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/main/Control%20Node/keepalived.conf -o /etc/keepalived/keepalived.conf
 curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/main/Control%20Node/check_apiserver.sh -o /etc/keepalived/check_apiserver.sh
+systemctl restart keepalived
+systemctl restart haproxy
 ```
 once downloaded nano into keepalive.conf at /etc/keepalived/keepalived.conf and change interface to what matches your control planes name you can get this by running "ip -br a"
 
