@@ -24,6 +24,7 @@ reboot
 ```
 
 ---
+### I recommend using ssh to do the below steps so you can copy paste a lot of the longer commands!
 
 ## Step 2: Install Docker
 
@@ -66,7 +67,7 @@ curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/mai
 systemctl restart keepalived && haproxy
 ```
 ___
-## step 5: setting up dns and 
+## step 5: setting up dns
 ONLY DO THIS ON THE 1ST CONTROL PLANE, OTHER CONTROL PLANES DONT NEED THIS STEP
 
 ```bash
@@ -77,7 +78,7 @@ curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/mai
 systemctl reload named
 ```
 ___
-## Step 5: Initialize the Kubernetes Control Plane
+## Step 6: Initialize the Kubernetes Control Plane
 
 Run the following command on the first PC to set up the control plane node.
 
@@ -95,7 +96,7 @@ On the second and third PCs, run the saved `kubeadm join` command to add them as
 
 ---
 
-## Step 6: Configure kubectl
+## Step 7: Configure kubectl
 
 Configure `kubectl` for the first user to interact with the Kubernetes cluster.
 
@@ -107,7 +108,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ---
 
-## Step 7: Install a Pod Network
+## Step 8: Install a Pod Network
 
 Kubernetes requires a pod network for inter-pod communication. A popular choice is Calico.
 
@@ -116,7 +117,7 @@ kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 ```
 ---
 
-## Step 8: Verify Installation
+## Step 9: Verify Installation
 
 Check that your nodes are up and running.
 ```bash
