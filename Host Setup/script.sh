@@ -1,9 +1,9 @@
 #!/bin/bash
 
 step_explain() {
-  echo -e "\n performing, $1 \n"
-  $1
-  echo -e "\n completed, $1 \n"
+  echo -e "\n[ ]performing, $1 \n"
+  bash -c "$1"
+  echo -e "\n[+]completed, $1 \n"
 }
 
 
@@ -18,6 +18,6 @@ step_explain "apt-get install -y kubelet kubeadm kubectl"
 step_explain "apt-mark hold kubelet kubeadm kubectl"
 step_explain "systemctl enable --now kubelet"
 step_explain "apt-get install -y keepalived haproxy"
-step_explain "sudo swapoff -a; sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab"
+step_explain "swapoff -a; sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab"
 
 echo -e "Setup of Host complete"
