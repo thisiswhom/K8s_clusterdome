@@ -55,6 +55,11 @@ sudo systemctl enable --now kubelet
 ```
 
 ---
+## Step 4: setting up a load balancer
+sudo apt-get install keepalived haproxy
+
+once downloaded nano into keepalive.conf at /etc/keepalived/keepalived.conf and change interface to what matches your control planes name you can get this by running "ip -br a"
+
 
 ## Step 4: Initialize the Kubernetes Control Plane
 
