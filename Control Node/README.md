@@ -86,13 +86,13 @@ Run the following command on the first PC to set up the control plane node.
 ##disable swap
 sudo swapoff -a
 sudo rm -f /swap.img 
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --control-plane-endpoint="k8s-api.cohort8.local:7443"
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --control-plane-endpoint="k8s-api.cohort8.local:7443" --upload-certs
 ```
 
 - This command initializes the first control plane node and configures it for high availability.
 - Save the `kubeadm join` command that is output. You will need this so save it.
-
-On the second and third PCs, run the saved `kubeadm join` command to add them as control plane nodes.
+- if you dont copy the kubeamd join you can use "kubeadm token create "6characterss.15characters" --print-join-command > kubeadmin-int-out.txt" and it will create a file for you called kubeadmin-int-out.txt that you can now copy to other machines to join. This token is temporary ~2hrs.
+-On the second and third PCs, run the saved `kubeadm join` command to add them as control plane nodes.
 
 ---
 
