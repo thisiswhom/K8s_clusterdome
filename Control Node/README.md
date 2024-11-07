@@ -85,7 +85,7 @@ Run the following command on the first PC to set up the control plane node.
 ##disable swap
 sudo swapoff -a
 sudo rm -f /swap.img 
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --control-plane-endpoint="your_pc_ip:6443"
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --control-plane-endpoint="k8s-api.cohort8.local:7443"
 ```
 
 - This command initializes the first control plane node and configures it for high availability.
