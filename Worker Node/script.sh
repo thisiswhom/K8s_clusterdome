@@ -10,4 +10,4 @@ apt-get update
 apt-get install -y kubelet kubeadm kubectl
 apt-mark hold kubelet kubeadm kubectl
 systemctl enable --now kubelet
-sudo swapoff -a; sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+swapoff -a; sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
