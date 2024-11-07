@@ -56,12 +56,15 @@ sudo systemctl enable --now kubelet
 
 ---
 ## Step 4: setting up a load balancer
+```bash
 sudo apt-get install keepalived haproxy
-
+curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/main/Control%20Node/haproxy.cfg -o /etc/haproxy/haproxy.cfg
+curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/main/Control%20Node/keepalived.conf -o /etc/keepalived/keepalived.conf
+curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/main/Control%20Node/check_apiserver.sh -o /etc/keepalived/check_apiserver.sh
+```
 once downloaded nano into keepalive.conf at /etc/keepalived/keepalived.conf and change interface to what matches your control planes name you can get this by running "ip -br a"
 
-
-## Step 4: Initialize the Kubernetes Control Plane
+## Step 5: Initialize the Kubernetes Control Plane
 
 Run the following command on the first PC to set up the control plane node.
 
@@ -79,7 +82,7 @@ On the second and third PCs, run the saved `kubeadm join` command to add them as
 
 ---
 
-## Step 5: Configure kubectl
+## Step 6: Configure kubectl
 
 Configure `kubectl` for the first user to interact with the Kubernetes cluster.
 
@@ -91,7 +94,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ---
 
-## Step 6: Install a Pod Network
+## Step 7: Install a Pod Network
 
 Kubernetes requires a pod network for inter-pod communication. A popular choice is Calico.
 
@@ -100,7 +103,7 @@ kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 ```
 ---
 
-## Step 7: Verify Installation
+## Step 8: Verify Installation
 
 Check that your nodes are up and running.
 ```bash
