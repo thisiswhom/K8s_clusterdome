@@ -71,11 +71,11 @@ ___
 ONLY DO THIS ON THE 1ST CONTROL PLANE, OTHER CONTROL PLANES DONT NEED THIS STEP
 
 ```bash
-apt-get install bind9
+sudo apt-get install bind9
 curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/main/Control%20Node/db.cohort8 -o /etc/bind/db.cohort8
 curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/main/Control%20Node/db.10.0.0 -o /etc/bind/db.10.0.0
 curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/main/Control%20Node/named.conf.local -o /etc/bind/named.conf.local
-systemctl reload named
+sudo systemctl reload named
 ```
 ___
 ## Step 6: Initialize the Kubernetes Control Plane
