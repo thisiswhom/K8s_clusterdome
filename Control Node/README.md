@@ -42,6 +42,7 @@ After installation, log out and back in to apply the Docker group change.
 These tools will allow you to set up and manage your Kubernetes cluster.
 
 ```bash
+sudo mkdir -p -m 755 /etc/apt/keyrings
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 # This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
@@ -64,8 +65,18 @@ curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/mai
 ###once downloaded nano into keepalive.conf at /etc/keepalived/keepalived.conf and change interface to what matches your control planes name you can get this by running "ip -br a"
 systemctl restart keepalived && haproxy
 ```
+___
+## step 5: setting up dns and 
+ONLY DO THIS ON THE 1ST CONTROL PLANE, OTHER CONTROL PLANES DONT NEED THIS STEP
 
-
+```bash
+apt-get install bind9
+curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/main/Control%20Node/db.cohort8 -o /etc/bind/db.cohort8
+curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/main/Control%20Node/db.10.0.0 -o /etc/bind/db.10.0.0
+curl https://raw.githubusercontent.com/thisiswhom/K8s_clusterdome/refs/heads/main/Control%20Node/named.conf.local -o /etc/bind/named.conf.local
+systemctl reload named
+```
+___
 ## Step 5: Initialize the Kubernetes Control Plane
 
 Run the following command on the first PC to set up the control plane node.
