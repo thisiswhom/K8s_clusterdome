@@ -1,0 +1,26 @@
+$TTL    60
+@       IN      SOA     localhost. root.localhost. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                          86400 )       ; Negative Cache TTL
+;
+@       IN      NS      localhost.
+gateway IN      A       10.0.0.1
+
+k8s-api IN      A       10.0.0.3
+
+k8s-control-4   IN      A       10.0.0.4
+k8s-control-5   IN      A       10.0.0.5
+k8s-control-14  IN      A       10.0.0.14
+
+k8s-worker-11   IN      A       10.0.0.11
+k8s-worker-12   IN      A       10.0.0.12
+k8s-worker-13   IN      A       10.0.0.13
+k8s-worker-15   IN      A       10.0.0.15
+k8s-worker-16   IN      A       10.0.0.16
+k8s-worker-17   IN      A       10.0.0.17
+k8s-worker-18   IN      A       10.0.0.18
+k8s-worker-19   IN      A       10.0.0.19
+k8s-worker-20   IN      A       10.0.0.20
