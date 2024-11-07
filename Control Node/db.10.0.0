@@ -1,0 +1,31 @@
+$TTL    60
+@       IN      SOA     localhost. root.localhost. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      localhost.
+1       IN      PTR     gateway.cohort8.local.
+
+3       IN      PTR     k8s-api.cohort8.local.
+
+4       IN      PTR     k8s-control-4.cohort8.local.
+5       IN      PTR     k8s-control-5.cohort8.local.
+14      IN      PTR     k8s-control-14.cohort8.local.
+
+6       IN      PTR     k8s-worker-6.cohort8.local.
+7       IN      PTR     k8s-worker-7.cohort8.local.
+8       IN      PTR     k8s-worker-8.cohort8.local.
+9       IN      PTR     k8s-worker-9.cohort8.local.
+10      IN      PTR     k8s-worker-10.cohort8.local.
+11      IN      PTR     k8s-worker-11.cohort8.local.
+12      IN      PTR     k8s-worker-12.cohort8.local.
+13      IN      PTR     k8s-worker-13.cohort8.local.
+15      IN      PTR     k8s-worker-15.cohort8.local.
+16      IN      PTR     k8s-worker-16.cohort8.local.
+17      IN      PTR     k8s-worker-17.cohort8.local.
+18      IN      PTR     k8s-worker-18.cohort8.local.
+19      IN      PTR     k8s-worker-19.cohort8.local.
+20      IN      PTR     k8s-worker-20.cohort8.local.
