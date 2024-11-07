@@ -18,5 +18,6 @@ step_explain "apt-get install -y kubelet kubeadm kubectl"
 step_explain "apt-mark hold kubelet kubeadm kubectl"
 step_explain "systemctl enable --now kubelet"
 step_explain "apt-get install -y keepalived haproxy"
+step_explain "sudo swapoff -a; sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab"
 
 echo -e "Setup of Host complete"
